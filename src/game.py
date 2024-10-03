@@ -155,7 +155,7 @@ class Game:
             self._collisions()
 
             # draw the game
-            self.display_surface.fill("#3a2e3f")
+            self.display_surface.fill("#0d1b2a")
             self._display_score()
             self.all_sprites.draw(self.display_surface)
 
@@ -164,6 +164,7 @@ class Game:
         self._menu_game_over()
 
     def _menu_game_over(self) -> None:
+        self._save_scores()
         menu = True
         while menu:
             self.display_surface.fill("black")
