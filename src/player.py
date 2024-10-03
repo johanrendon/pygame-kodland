@@ -21,6 +21,8 @@ class Player(pygame.sprite.Sprite):
         self.laser_surf: pygame.Surface = pygame.image.load(
             Path("../assets/images/laser.png")
         )
+        self.laser_sound = pygame.mixer.Sound(Path("../assets/audio/laser.wav"))
+        self.laser_sound.set_volume(0.5)
 
         # cooldown
         self.can_shoot: bool = True
@@ -56,5 +58,6 @@ class Player(pygame.sprite.Sprite):
             Laser(self.laser_surf, self.rect.midtop, *groups)
             self.can_shoot = False
             self.laser_shoot_time = pygame.time.get_ticks()
+            self.laser_sound.play()
 
         self.laser_timer()
